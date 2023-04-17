@@ -1,0 +1,36 @@
+
+/* Navbar */
+.navbar {
+	 background-color: #fff;
+	 box-shadow: 0 0 5px 1px grey;
+}
+
+/* Table tbody td text color*/
+.main-content td {
+	color: #000 !important;
+}
+
+/* all text color */
+.main-content div, .main-content label, .main-content select {
+	color: black;
+}
+
+/* button(a tag) text color */
+.main-content a {
+	color: dodgeblue;
+}
+
+/* Navbar button color, ex: Reset password, logout; */
+a.nav-link {
+	color: black !important;
+}
+
+/* File table background color */
+.main-content.tree.main-content tr.branch {
+    background-color: none !important;
+}
+
+/* Input tag text color */
+.main-content input {
+	color: white;
+}

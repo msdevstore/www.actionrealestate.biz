@@ -1,0 +1,77 @@
+ .created-folder-title {
+    background-color: #FFFDD0;
+    border-radius: 5px;
+    border: 1px solid grey;
+    align-items: baseline;
+ }
+
+ .arrange {
+ 	display: flex;
+    justify-content: space-around;
+    align-items: center;
+ }
+
+ .file-title {
+ 	justify-content: space-around;
+   position: relative;
+ }
+
+ .icon {
+ 	width: 45px;
+ 	height: 45px;
+ 	border: 1px solid grey;
+ 	border-radius: 5px;
+ }
+
+ .file-title h4 {
+ 	flex: 1;
+ 	border: 1px solid grey;
+ 	border-radius: 5px;
+ 	height: 45px;
+ 	padding: 6px;
+ }
+
+ .submenu {
+   position: absolute;
+   background-color: #FFFDD0;
+   right: 0;
+   top: 20px;
+   padding-inline-start: 20px !important;
+   padding-inline-end: 20px !important;
+   padding: 5px;
+   border-radius: 5px;
+   border: 1px solid grey;
+   display: none;
+   z-index: 1;
+ }
+
+ .submenu li {
+   list-style-type: none;
+ }
+
+ .submenu li a:hover {
+   cursor: pointer;
+ }
+
+ .button {
+  cursor: pointer;
+ }
+
+ .center {
+  display: flex;
+  justify-content: center;
+ }
+
+ #close-created-folder-title {
+  display: flex;
+  justify-content: space-around;
+ }
+
+ .form-container {
+  width: 90%;
+ margin: 30px auto auto;
+ }
+
+ .doc-btn {
+     width: 80px;
+ }

@@ -1,0 +1,107 @@
+<?php include '../../includes/sessionCheck.inc.php';?>
+<!DOCTYPE html>
+<html lang="en">  
+          
+ 
+
+
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta property="og:type" content="website" />
+
+
+      <title>MOBILE Enterprise Portal</title>
+
+
+<?php include '../../includes/headInfo.inc.php';?>
+
+    
+      <meta name="description" content="">
+      <meta name="keywords" content="">
+      <meta property="og:url" content="THIS FULL URL" />
+      <meta property="og:title" content="Non Advertising Title" />
+      <meta property="og:description" content="" />
+      <meta property="og:image" content="Full URL to Anchor Image for a Post to this page" />
+ 
+      
+
+
+<!-- Begin Viewport Check for Responsive Design -->      
+<!-- Intended Viewport of THIS Page is Mobile 480px or less -->      
+<!-- Comment Out the Intended Viewport of THIS page in the JS below -->
+<!-- Also adjust the IF and ELSE IF -->
+
+<script type="text/javascript">
+//if
+// Mobile (small)
+//(window.matchMedia("(max-width: 480px)").matches) {
+//     window.location.replace("filename-mob.html");
+//}
+
+if
+// Tablet (medium)
+(window.matchMedia("(min-width: 481px) and (max-width: 1024px)").matches) {
+     window.location.replace("pnpIndexTab.htm");
+ }
+
+else if
+// Desktop (large)
+(window.matchMedia("(min-width: 1025px)").matches) {
+    window.location.replace("pnpIndexDesk.htm");
+}
+</script>
+<!-- End Viewport Check for Responsive Design -->
+
+
+</head>
+
+
+
+
+
+
+
+<body>
+<div class="wrapper">
+
+<?php include '../../includes/navbar.inc.php';?>
+<br /><br />
+
+<p>
+Mobile Version
+<br />
+<b>Policies &amp; Procedures</b>
+<br /><br />
+</p>
+
+
+
+
+<br />
+
+
+<a href="pol/PolicyManual.pdf"><img class="EntModule" src="pol.jpg" width="720" height="530" alt="Policies and Procedures"/></a>
+<br />
+<a href="pro/ProcedureManual.pdf"><img class="EntModule" src="pro.jpg" width="720" height="530" alt="Policies and Procedures"/></a>
+
+
+
+
+
+<br /><br />
+<p>
+<b>Policies vs. Procedures</b>
+<br />
+What's the difference?  
+<br /><br />
+Simply put, Policies are a guide on "what" to do, while Procedures are a guide on "how" to do it.
+<br /><br />
+Policies and Procedures (P<i>n</i>P) are a living documents that evolve as the need arises.  When you have a question about PnP, always check here first for the most up to date information!
+
+<br /><br />
+
+</div><!-- end wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+
+/*  */
+
+
+body
+	{
+	overflow-x: hidden; /* Hide horizontal scrollbar */
+	}
+
+
+/* small stationary logo for Enterprise Menu page */
+body.TinyLogo
+	{
+	background-image: url("img_tree.png");
+	background-repeat: no-repeat;
+	background-position: right top;
+	margin-right: 200px;
+	background-attachment: fixed;
+	}
+	
+	
+.wrapper
+	{
+	margin-right: auto;
+	margin-left:  auto;
+	
+	width: 1461px;
+	max-width: 99%;
+
+	padding-right: 5px;
+	padding-left:  5px;
+
+/* borders off, set to 1 if need to see placement */  
+	border-top-style:solid;
+	border-top-color:black;
+	border-top-width:0px;
+
+	border-left-style:solid;
+	border-left-color:black;
+	border-left-width:0px;
+
+	border-right-style:solid;
+	border-right-color:black;
+	border-right-width:0px;
+  
+  	border-bottom-style:solid;
+	border-bottom-color:black;
+	border-bottom-width:0px;  
+	}
+
+
+
+	
+	
+.EntModuleTable
+	{
+	width:99%;
+	margin-left:auto;
+	margin-right:auto;
+	}
+
+.tableRowSpacer
+	{height:25px;
+	}
+
+	
+
+/* EntModule images are the full width images on the menuXXX.htm
+page to get into the Enterprise sections */
+img.EntModule
+	{
+	width: 98%;
+	max-width:720px;
+    height: auto;
+
+	display: block; /* works with margins to center */
+	margin-right: auto;
+	margin-left:  auto;
+
+    aspect-ratio: attr(width) / attr(height);/* allows HTML width & height
+	attributes to reserve page space but not interfere with width percent
+	spec'd here */
+	}
+  
+  
+
+
+
+
+  
+  
+  
+/* ALL paragraphs as of now will be centered by default */
+/* Font sizes change with viewport size breakpoints */  
+@media (max-width: 480px) {
+  p { font-size: 18px;
+  text-align:center; 
+  color:red
+  }
+}
+
+@media (min-width: 481px)
+	and (max-width: 1024px) {
+  p { font-size: 21px;
+  text-align:center; 
+  color:blue
+  }
+}
+
+@media (min-width: 1025px) {
+  p { font-size: 23px;
+  text-align:center; 
+  color:green
+  }
+}
+
+
+
+
+
+@media (max-width: 480px) {
+  .navMenu
+  { font-size: 18px;
+  text-align:right; 
+  color:red
+  }
+}
+
+@media (min-width: 481px)
+	and (max-width: 1024px) {
+  .navMenu
+  { font-size: 21px;
+  text-align:right; 
+  color:blue
+  }
+}
+
+@media (min-width: 1025px) {
+  .navMenu
+  { font-size: 23px;
+  text-align:right; 
+  color:green
+  }
+}
+
+
+
+
+

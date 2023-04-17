@@ -1,0 +1,72 @@
+/* This is just for pages related to the upload section */
+
+	/* upldDnldBtn images are the upload and download buttons
+	on /_upload/template/index.htm */
+	
+img.upldDnldBtn
+	{
+	width: 95%;
+	max-width:201px;
+    height: auto;
+
+	display: block; /* works with margins to center */
+	margin-right: auto;
+	margin-left:  auto;
+
+	}
+	
+	
+
+
+
+
+
+table.fileMgmt
+	{width= 95%
+	border:1px
+	 }
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+/* not using right now 
+
+div
+{
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    width:30%;
+}
+.one
+{
+    background-color:limegreen;    
+    float: left;  
+}
+.two
+{
+    background-color:orange;
+    float: left;
+}
+.three
+{
+    background-color: hotpink;
+    float: left;
+} 
+
+*/

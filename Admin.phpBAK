@@ -1,0 +1,317 @@
+<?php
+    require "includes/header.inc.php";
+?>
+
+    <main>
+        <div class="main-content mx-2">
+            <button class="btn btn-outline-primary mb-3" id="new-user">Add User</button>
+            <table class="table table-hover shadow-lg" id="myTable">
+                <thead>
+                    <tr class="fw-bold text-muted">
+                        <th>#</th>
+                        <th>Full Name</th>
+                        <th>Role</th>
+                        <th>Username</th>
+                        <th>Status</th>
+                        <th style="text-align: right;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                        require "includes/dbh.inc.php" ;
+                        $sql = "SELECT * FROM users";
+                        $result = $conn->query($sql);
+                        $id = 0;
+                        if ($result->num_rows > 0) {
+                          // output data of each row
+                          while($row = $result->fetch_assoc()) {
+                            $role = 'User';
+                            if($row['role'] == 1) $role = 'Admin';
+                            $status = 'Not yet';
+                            if($row['status'] == 1) $status = 'Allowed';
+                            echo 
+                            '<tr>
+                                <td class="text-white fw-bold text-hover-primary fs-6">'.++$id.'</td>
+                                <td class="text-white fw-bold text-hover-primary fs-6">'.$row['firstname'].' '.$row['lastname'].'</td>
+                                <td class="text-white fw-bold text-hover-primary fs-6">'.$role.'</td>
+                                <td class="text-white fw-bold text-hover-primary fs-6">'.$row['username'].'</td>
+                                <td class="text-white fw-bold text-hover-primary fs-6">'.$status.'</td>
+                                <td class="text-end">
+                                    <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 edit-btn" item-id="'.$row['id'].'">
+                                        <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
+                                        <span class="svg-icon svg-icon-3">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path opacity="0.3" d="M21.4 8.35303L19.241 10.511L13.485 4.755L15.643 2.59595C16.0248 2.21423 16.5426 1.99988 17.0825 1.99988C17.6224 1.99988 18.1402 2.21423 18.522 2.59595L21.4 5.474C21.7817 5.85581 21.9962 6.37355 21.9962 6.91345C21.9962 7.45335 21.7817 7.97122 21.4 8.35303ZM3.68699 21.932L9.88699 19.865L4.13099 14.109L2.06399 20.309C1.98815 20.5354 1.97703 20.7787 2.03189 21.0111C2.08674 21.2436 2.2054 21.4561 2.37449 21.6248C2.54359 21.7934 2.75641 21.9115 2.989 21.9658C3.22158 22.0201 3.4647 22.0084 3.69099 21.932H3.68699Z" fill="#fff" />
+                                                <path d="M5.574 21.3L3.692 21.928C3.46591 22.0032 3.22334 22.0141 2.99144 21.9594C2.75954 21.9046 2.54744 21.7864 2.3789 21.6179C2.21036 21.4495 2.09202 21.2375 2.03711 21.0056C1.9822 20.7737 1.99289 20.5312 2.06799 20.3051L2.696 18.422L5.574 21.3ZM4.13499 14.105L9.891 19.861L19.245 10.507L13.489 4.75098L4.13499 14.105Z" fill="#fff" />
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </a>
+                                    <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm del-btn" item-id="'.$row['id'].'">
+                                        <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
+                                        <span class="svg-icon svg-icon-3">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5 9C5 8.44772 5.44772 8 6 8H18C18.5523 8 19 8.44772 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z" fill="#fff" />
+                                                <path opacity="0.5" d="M5 5C5 4.44772 5.44772 4 6 4H18C18.5523 4 19 4.44772 19 5V5C19 5.55228 18.5523 6 18 6H6C5.44772 6 5 5.55228 5 5V5Z" fill="#fff" />
+                                                <path opacity="0.5" d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4V4H9V4Z" fill="#fff" />
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </a>
+                                </td>
+                            </tr>';
+                          }
+                        } else {
+                          echo "0 results";
+                        }
+                        $conn->close();
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </main>
+<!-- The Modal -->
+<div class="modal" id="kt_modal_new_user">
+  <div class="modal-dialog modal-dialog-centered">
+    <form class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-title">Add New User</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <!--end::Heading-->
+        <input type="hidden" id="id" value="0">
+        <!--begin::Input group-->
+        <div class="form-group">
+            <!--begin::Label-->
+            <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                <span class="required">First Name</span>
+                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify a target name for future usage and reference"></i>
+            </label>
+            <!--end::Label-->
+            <input type="text" class="form-control form-control-solid" placeholder="Enter First Name" name="first_name" id="first_name" />
+        </div>
+        <!--end::Input group-->
+        <!--begin::Input group-->
+        <div class="form-group">
+            <!--begin::Label-->
+            <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                <span class="required">Last Name</span>
+                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify a target name for future usage and reference"></i>
+            </label>
+            <!--end::Label-->
+            <input type="text" class="form-control form-control-solid" placeholder="Enter Last Name" name="last_name" id="last_name" />
+        </div>
+        <!--end::Input group-->
+        <!--begin::Input group-->
+        <div class="form-group">
+            <!--begin::Label-->
+            <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                <span class="required">Username</span>
+            </label>
+            <!--end::Label-->
+            <input type="text" class="form-control form-control-solid" placeholder="Enter Username" name="username" id="username" />
+        </div>
+        <!--end::Input group-->
+        <!--begin::Input group-->
+        <div class="form-group" id="note">
+            <!--begin::Label-->
+            <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                <span class="required">Password</span>
+            </label>
+            <!--end::Label-->
+            <input type="text" class="form-control form-control-solid" placeholder="Enter Password" name="password" id="password" />
+        </div>
+        <!--end::Input group-->
+        <!--begin::Input group-->
+        <div class="row g-9 mb-8">
+            <!--begin::Col-->
+            <div class="col-md-12 fv-row">
+                <label class="required fs-6 fw-semibold mb-2">Assign Role</label>
+                <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Select a Role" name="role" id="role">
+                    <option value="">Select role...</option>
+                    <option value="0">User</option>
+                    <option value="1">Admin</option>
+                </select>
+            </div>
+            <!--end::Col-->
+        </div>
+        <!--end::Input group-->
+        <!--begin::Input group-->
+        <div class="row g-9 mb-8">
+            <!--begin::Col-->
+            <div class="col-md-12 fv-row">
+                <label class="required fs-6 fw-semibold mb-2">Status</label>
+                <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Allow this user" name="status" id="status">
+                    <option value="0">NotYet</option>
+                    <option value="1">Allow</option>
+                </select>
+            </div>
+            <!--end::Col-->
+        </div>
+        <!--end::Input group-->
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <a id="kt_modal_new_user_submit" class="btn btn-primary">
+            Submit
+        </a>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+                        <div class="modal" id="del-Modal">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+
+                              <!-- Modal Header -->
+                              <div class="modal-header">
+                                <h4 class="modal-title">Note</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              </div>
+
+                              <!-- Modal body -->
+                              <div class="modal-body">
+                                <h4 class="text-center">Are you sure to delete this user?</h4>
+                                <input type="hidden" id="del-id">
+                              </div>
+
+                              <!-- Modal footer -->
+                              <div class="modal-footer">
+                                <button type="submit" class="btn btn-success" id="del-Modal-ok">Sure</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+        <!--end::Modal - Cart User-->
+
+
+        <script>
+            $(document).ready(function() {
+                var table = $('#myTable').DataTable();
+ 
+                // #myInput is a <input type="text"> element
+                $('#myInput').on( 'keyup', function () {
+                    table.search( this.value ).draw();
+                });
+
+                $(document).on('click', '#new-user', function() {
+                    $('#id').val(0);
+                    $('#first_name').val('');
+                    $('#last_name').val('');
+                    $('#username').val('');
+                    $('#password').val('');
+                    $('#role').val(0).change();
+                    $('#status').val(0).change();
+                    $('#modal-title').html('Add New User');
+                    //$('#note').css('display', 'block');
+                    //$('#kt_modal_new_user').modal('show');
+            $('#modal-btn').attr('data-target', '#kt_modal_new_user');
+            $('#modal-btn').click();
+                });
+
+                $('#kt_modal_new_user_submit').click(function() {
+                    var id = $('#id').val();
+                    var type = 'addUser';
+                    if(id > 0) type = 'editUser';
+                    $.ajax({
+                        url: "./controllers/User.php",
+                        type: "POST",
+                        data: {
+                            type: type,
+                            id: id,
+                            firstname: $('#first_name').val(),
+                            lastname: $('#last_name').val(),
+                            username: $('#username').val(),
+                            password: $('#password').val(),
+                            role: $('#role').val(),
+                            status: $('#status').val()
+                        },
+                        success: function(res) {
+                            if(res == 'success') {
+                                alert('Success');
+                                window.location.reload();
+                            } else if(res == 'userexist') {
+                                alert('User is already exist!')
+                            } else {
+                                alert('Failed');
+                            }
+                        },
+                        error: function(err) {
+                            console.log(err);
+                        }
+                    })
+                })
+
+                $(document).on('click', '.edit-btn', function() {
+                    $.ajax({
+                        url: "./controllers/User.php",
+                        type: "POST",
+                        data: {
+                            type: 'getUser',
+                            id: $(this).attr('item-id')
+                        },
+                        success: function(res) {
+                            var user = JSON.parse(res);
+                            $('#id').val(user['id']);
+                            $('#first_name').val(user['firstname']);
+                            $('#last_name').val(user['lastname']);
+                            $('#username').val(user['username']);
+                            $('#password').val('???');
+                            $('#role').val(user['role']).change();
+                            $('#status').val(user['status']).change();
+                            $('#modal-title').html('Edit User');
+                            //$('#note').css('display', 'none');
+                            //$('#kt_modal_new_user').modal('show');
+            $('#modal-btn').attr('data-target', '#kt_modal_new_user');
+            $('#modal-btn').click();
+                        },
+                        error: function(err) {
+                            console.log(err);
+                        }
+                    })
+                });
+
+                $(document).on('click', '.del-btn', function() {
+                    var id = $(this).attr('item-id');
+                    $('#del-id').val(id);
+                    //$('#del-Modal').modal('show');
+            $('#modal-btn').attr('data-target', '#del-Modal');
+            $('#modal-btn').click();
+                });
+
+                $('#del-Modal-ok').on('click', function() {
+                    $.ajax({
+                        url: './controllers/User.php',
+                        type: 'POST',
+                        data: {
+                            type: 'deleteUser',
+                            id: $('#del-id').val()
+                        },
+                        success: function(res) {
+                            if(res == 1) {
+                                alert('Success');
+                                window.location.reload();
+                            } else {
+                                alert('Failed');
+                            }
+                        },
+                        error: function(err) {
+                            console.log(err);
+                        }
+                    })
+                });
+            });
+        </script>
+
+<?php
+    require "includes/footer.inc.php";
+?>

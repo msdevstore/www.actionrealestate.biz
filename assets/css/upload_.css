@@ -1,0 +1,31 @@
+ .created-folder-title {
+    background-color: pink;
+    border-radius: 5px;
+    border: 1px solid grey;
+    align-items: baseline;
+ }
+
+ .arrange {
+ 	display: flex;
+    justify-content: space-around;
+    align-items: center;
+ }
+
+ .file-title {
+ 	justify-content: space-around;
+ }
+
+ .icon {
+ 	width: 45px;
+ 	height: 45px;
+ 	border: 1px solid grey;
+ 	border-radius: 5px;
+ }
+
+ .file-title h4 {
+ 	flex: 1;
+ 	border: 1px solid grey;
+ 	border-radius: 5px;
+ 	height: 45px;
+ 	padding: 6px;
+ }
