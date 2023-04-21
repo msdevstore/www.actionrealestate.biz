@@ -76,6 +76,8 @@
                 </p>
             </td>
 
+            <input type="hidden" id="pend-flag" value="0">
+
             <!-- The Modal -->
             <div class="modal" id="pend-start-confirm-modal">
                 <div class="modal-dialog modal-dialog-centered">
@@ -607,7 +609,7 @@
                 <div id="transaction-close" class="m-5" style="display: none;">
                     <h2 class="text-primary text-center mb-5">Select Transaction</h2>
                     <select class="form-control" id="close-transaction-dropdown">
-                        <option value="" selected>--- Select Here ---</option>
+                        <option value="">--- Select Here ---</option>
                         <?php
                         foreach($all_dirs as $dir) {
                             $folder = str_replace ("./pend/", "", $dir);
@@ -1962,7 +1964,7 @@
                             </div>
                             <div class="col-10"><h4 class="text-right">Please close this document at this time ></h4></div>
                             <div class="col-2">
-                                <button type="button" class="btn btn-secondary doc-btn" id="download-close" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary doc-btn" id="download-close">Close</button>
                                 <button type="button" class="btn btn-secondary doc-btn" id="download-close-ok" data-dismiss="modal" style="display: none"></button>
                             </div>
                         </div>
@@ -1972,7 +1974,37 @@
             </div>
         </div>
     </div>
+
     <div id="editor"></div>
+
+    <!-- The Modal -->
+    <div class="modal" id="final-modal-close">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Note</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="container">
+                            <h5>By closing this file, I certify I have uploaded all required documents pertaining to this file.</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" id="final-modal-close-no-btn" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <!-- The Modal -->
     <div class="modal" id="chapter-final-modal">

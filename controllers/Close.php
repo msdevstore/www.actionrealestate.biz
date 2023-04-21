@@ -51,7 +51,7 @@
 
         else {
             if($filename == "") $file_name = $path.$_FILES["file"]["name"];
-            else $file_name = $path.$filename.$extension;
+            else $file_name = $path.$filename.'.'.$extension;
             move_uploaded_file($_FILES["file"]["tmp_name"], $file_name);
 
             echo 1;
