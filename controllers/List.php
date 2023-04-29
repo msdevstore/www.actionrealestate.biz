@@ -14,9 +14,25 @@ if(isset($_POST['type'])) {
         case 'listListingContract': ListListingContract(); break;
         case 'getFiles': GetFiles(); break;
         case 'listAdditionalUpload': ListAdditionalUpload(); break;
+        case 'deleteDocument': DeleteDocument(); break;
 
     }
 
+}
+
+function DeleteDocument() {
+    session_start();
+    $auth = $_SESSION['auth'];
+    $username = $auth['username'];
+    $folder = $_POST['folder'];
+    $file = $_POST['file'];
+    $path = $_POST['path'];
+    $docPath = '../priv/'.$username.'/'.$path.'/'.$folder.'/'.$file;
+    if(is_file($docPath)) {
+        $result = unlink($docPath);
+        if($result) echo 1;
+        else echo 0;
+    }
 }
 
 function ListAdditionalUpload() {

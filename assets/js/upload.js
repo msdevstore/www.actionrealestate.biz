@@ -96,7 +96,7 @@ $(document).ready(function() {
                                 <div class="icon">
                                     <a href="#" class="filemenu-btn" num="${index}"><img src="/e/assets/img/tools.png" width="100%" height="100%" alt="" title="" /></a>
                                     <ul class="submenu" id="submenu-${index}">
-                                        <li><a class="mail-btn" folder=${folder} file="${file['name']}" path="./pend/${folder}/${file['name']}">Email</a></li>
+                                        <li><a class="mail-btn" folder=${folder} file="${file['name']}" path="pend">Delete</a></li>
                                         <li><a href="./pend/${folder}/${file['name']}" target="_blank">Download</a></li>
                                         <li><a href="./pend/${folder}/${file['name']}" target="_blank">Print</a></li>
                                     </ul>
@@ -176,7 +176,7 @@ $(document).ready(function() {
                             <div class="icon">
                                 <a href="#" class="filemenu-btn" num="${index}"><img src="/e/assets/img/tools.png" width="100%" height="100%" alt="" title="" /></a>
                                 <ul class="submenu" id="submenu-${index}">
-                                    <li><a class="mail-btn" folder=${folder} file="${file['name']}" path="./pend/${folder}/${file['name']}">Email</a></li>
+                                    <li><a class="mail-btn" folder=${folder} file="${file['name']}" path="pend">Delete</a></li>
                                     <li><a href="./pend/${folder}/${file['name']}" target="_blank">Download</a></li>
                                     <li><a href="./pend/${folder}/${file['name']}" target="_blank">Print</a></li>
                                 </ul>
@@ -189,16 +189,15 @@ $(document).ready(function() {
         }
     }
 
-
-
-    $(document).on('click', '.mail-btn', function() {
+    /*$(document).on('click', '.mail-btn', function() {
         const link = new URL($(this).attr('path'), document.baseURI).href;
         const file = $(this).attr('file');
         $('#maillink').val(link);
         $('#mailfile').val(file);
         $('#modal-btn').attr('data-target', '#mail-modal');
         $('#modal-btn').click();
-    })
+    })*/
+
     $('#mail-ok-btn').click(function() {
         const to = $('#mailto').val();
         const subject = $('#mailsubject').val();
@@ -911,7 +910,7 @@ $(document).ready(function() {
                                 <div class="icon">
                                     <a class="filemenu-btn button" num="${index}"><img src="/e/assets/img/tools.png" width="100%" height="100%" alt="" title="" /></a>
                                     <ul class="submenu" id="submenu-${index}">
-                                        <li><a class="mail-btn" folder=${folder} file="${file['name']}" path="./close/${folder}/${file['name']}">Email</a></li>
+                                        <li><a class="mail-btn" folder=${folder} file="${file['name']}" path="close">Delete</a></li>
                                         <li><a href="./close/${folder}/${file['name']}" target="_blank">Download</a></li>
                                         <li><a href="./close/${folder}/${file['name']}" target="_blank">Print</a></li>
                                     </ul>
@@ -974,7 +973,7 @@ $(document).ready(function() {
                                 <div class="icon">
                                     <a class="filemenu-btn button" num="${index}"><img src="/e/assets/img/tools.png" width="100%" height="100%" alt="" title="" /></a>
                                     <ul class="submenu" id="submenu-${index}">
-                                        <li><a class="mail-btn" folder=${folder} file="${file['name']}" path="./close/${folder}/${file['name']}">Email</a></li>
+                                        <li><a class="mail-btn" folder=${folder} file="${file['name']}" path="close">Delete</a></li>
                                         <li><a href="./close/${folder}/${file['name']}" target="_blank">Download</a></li>
                                         <li><a href="./close/${folder}/${file['name']}" target="_blank">Print</a></li>
                                     </ul>
@@ -1903,7 +1902,7 @@ $(document).ready(function() {
                                 <div class="icon">
                                     <a class="filemenu-btn button" num="${index}"><img src="/e/assets/img/tools.png" width="100%" height="100%" alt="" title="" /></a>
                                     <ul class="submenu" id="submenu-${index}">
-                                        <li><a class="mail-btn" folder=${folder} file="${file['name']}" path="./close/${folder}/${file['name']}">Email</a></li>
+                                        <li><a class="mail-btn" folder=${folder} file="${file['name']}" path="close">Delete</a></li>
                                         <li><a href="./close/${folder}/${file['name']}" target="_blank">Download</a></li>
                                         <li><a href="./close/${folder}/${file['name']}" target="_blank">Print</a></li>
                                     </ul>
@@ -2037,7 +2036,7 @@ $(document).ready(function() {
                                 <div class="icon">
                                     <a class="filemenu-btn button" num="${index}"><img src="/e/assets/img/tools.png" width="100%" height="100%" alt="" title="" /></a>
                                     <ul class="submenu" id="submenu-${index}">
-                                        <li><a class="mail-btn" folder=${folder} file="${file['name']}" path="./list/${folder}/${file['name']}">Email</a></li>
+                                        <li><a class="mail-btn" folder=${folder} file="${file['name']}" path="list">Delete</a></li>
                                         <li><a href="./list/${folder}/${file['name']}" target="_blank">Download</a></li>
                                         <li><a href="./list/${folder}/${file['name']}" target="_blank">Print</a></li>
                                     </ul>
@@ -2366,13 +2365,6 @@ $(document).ready(function() {
         }
     });
 
-
-
-
-
-
-
-
     function GetListFiles() {
         var folder = $('#list-created-folder-title h4').html();
         if(folder.length > 0) {
@@ -2399,7 +2391,7 @@ $(document).ready(function() {
                                 <div class="icon">
                                     <a class="filemenu-btn button" num="${index}"><img src="/e/assets/img/tools.png" width="100%" height="100%" alt="" title="" /></a>
                                     <ul class="submenu" id="submenu-${index}">
-                                        <li><a class="mail-btn" folder=${folder} file="${file['name']}" path="./list/${folder}/${file['name']}">Email</a></li>
+                                        <li><a class="mail-btn" folder=${folder} file="${file['name']}" path="list">Delete</a></li>
                                         <li><a href="./list/${folder}/${file['name']}" target="_blank">Download</a></li>
                                         <li><a href="./list/${folder}/${file['name']}" target="_blank">Print</a></li>
                                     </ul>
@@ -2413,6 +2405,34 @@ $(document).ready(function() {
             })
         }
     }
+
+    $(document).on('click', '.mail-btn', function() {
+        const path = $(this).attr('path');
+        $.ajax({
+            url: "/e/controllers/List.php",
+            type: "POST",
+            data: {
+                type: 'deleteDocument',
+                folder: $(this).attr('folder'),
+                file: $(this).attr('file'),
+                path: path
+            },
+            success:function(data) {
+                console.log(data);
+                if(data === '1') {
+                    switch (path) {
+                        case 'pend': GetFiles(); break;
+                        case 'close': GetCloseFiles(); break;
+                        case 'list': GetListFiles(); break;
+                    }
+                    alert("Document Deleted!");
+                } else alert("Something went wrong!");
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        })
+    })
 
     function modalOpen(modal) {
         $('#modal-btn').attr('data-target', '#' + modal);
